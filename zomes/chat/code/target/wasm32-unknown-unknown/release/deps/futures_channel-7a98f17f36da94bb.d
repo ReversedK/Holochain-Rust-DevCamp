@@ -1,0 +1,9 @@
+/media/pc/Dev/Workspace/holochain-lab/holochat-rust/zomes/chat/code/target/wasm32-unknown-unknown/release/deps/libfutures_channel-7a98f17f36da94bb.rlib: /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/lib.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/lock.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/mpsc/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/mpsc/queue.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/oneshot.rs
+
+/media/pc/Dev/Workspace/holochain-lab/holochat-rust/zomes/chat/code/target/wasm32-unknown-unknown/release/deps/futures_channel-7a98f17f36da94bb.d: /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/lib.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/lock.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/mpsc/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/mpsc/queue.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/oneshot.rs
+
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/lib.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/lock.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/mpsc/mod.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/mpsc/queue.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-preview-0.2.2/src/oneshot.rs:

@@ -1,0 +1,15 @@
+/media/pc/Dev/Workspace/holochain-lab/holochat-rust/zomes/chat/code/target/wasm32-unknown-unknown/release/deps/liblibc-a4e495c2807658e6.rlib: /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/lib.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/macros.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/dox.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/windows.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/redox/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/redox/net.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/cloudabi/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/fuchsia/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/switch.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/unix/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/sgx.rs
+
+/media/pc/Dev/Workspace/holochain-lab/holochat-rust/zomes/chat/code/target/wasm32-unknown-unknown/release/deps/libc-a4e495c2807658e6.d: /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/lib.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/macros.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/dox.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/windows.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/redox/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/redox/net.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/cloudabi/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/fuchsia/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/switch.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/unix/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/sgx.rs
+
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/lib.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/macros.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/dox.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/windows.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/redox/mod.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/redox/net.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/cloudabi/mod.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/fuchsia/mod.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/switch.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/unix/mod.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.44/src/sgx.rs:

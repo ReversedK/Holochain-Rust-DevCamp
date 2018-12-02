@@ -1,0 +1,12 @@
+/media/pc/Dev/Workspace/holochain-lab/holochat-rust/zomes/chat/code/target/wasm32-unknown-unknown/release/deps/libreed_solomon-8820860060b6b989.rlib: /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/lib.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/macros.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/poly.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/poly_math.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/encoder.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/decoder.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/buffer.rs
+
+/media/pc/Dev/Workspace/holochain-lab/holochat-rust/zomes/chat/code/target/wasm32-unknown-unknown/release/deps/reed_solomon-8820860060b6b989.d: /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/lib.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/macros.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/mod.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/poly.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/poly_math.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/encoder.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/decoder.rs /home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/buffer.rs
+
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/lib.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/macros.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/mod.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/poly.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/gf/poly_math.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/encoder.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/decoder.rs:
+/home/pc/.cargo/registry/src/github.com-1ecc6299db9ec823/reed-solomon-0.2.1/src/buffer.rs:
