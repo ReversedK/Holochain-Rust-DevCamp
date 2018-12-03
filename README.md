@@ -6,7 +6,7 @@ steps to reproduce the OutofMemory error "error":{"Internal":"{\"kind\":{\"Valid
 
 1. run hc run --port 3400 --package  
 2. wait for initialization (creation of a channel and a profile)
-3. use the chat or just let it run for approx 8-10mn
+3. use the chat (ui/index2.html) or just let it run for approx 8-10mn
 4. try to send a message or create a room, watch the hc console to see the message
 
 
