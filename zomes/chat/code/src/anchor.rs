@@ -8,7 +8,6 @@ use hdk::{
         error::HolochainError,
         cas::content::Address,
     },
-
        self,
     entry_definition::{
         ValidatingEntryType,
@@ -32,15 +31,16 @@ pub fn entry_definition() -> ValidatingEntryType {
                 Ok(()) 
                 },
             links : [
-              profile_directory_link()
+              generate_link_validation("profile".to_string(), "profile_directory".to_string()),
+              generate_link_validation("channel".to_string(), "channel_directory".to_string())
             ]              
         )
 }
 
-fn profile_directory_link() -> ValidatingLinkDefinition { 
-    from!(
-        "profile",
-        tag: "profile_directory",
+fn generate_link_validation(object:String,tag:String)->ValidatingLinkDefinition {
+    to!(
+        object,
+        tag: tag,
         validation_package: || {
             hdk::ValidationPackageDefinition::ChainFull
         },
@@ -51,39 +51,32 @@ fn profile_directory_link() -> ValidatingLinkDefinition {
 }
 
 
-pub fn link_to_anchor(anchor_name:String,address:Address,tag:String)->JsonString{
-    
+
+pub fn link_to_anchor(anchor_name:String,address:Address,tag:String)->JsonString{    
     let anchor_entry = Entry::new(EntryType::App("anchor".into()), json!(anchor_name));
      match hdk::commit_entry(&anchor_entry){
         Ok(anchor_address)=>{
             match hdk::link_entries(&anchor_address,&address,tag) {
-            Ok(())=>{
-                hdk::debug("works!!!!!!!!!!!!");
-                json!({"success":true}).into()
-                },
-            Err(err)=>{
-                  hdk::debug(err);
-                json!({"success":false,"err":"address not linked to anchor"}).into()
-            }
+                Ok(())=>{
+                    hdk::debug("works!!!!!!!!!!!!");
+                    json!({"success":true}).into()
+                    },
+                Err(err)=>{
+                    hdk::debug(err);
+                    json!({"success":false,"err":"address not linked to anchor"}).into()
+                }
             }
         }
         Err(err)=>json!({"success":false}).into()   
     }   
-
-
-   // let anchor_instance = json::from_json_str(anchor_call).unwrap().into();
-   // let anchor_address = anchor_instance.anchor_address;
-
 }
 
 pub fn getAddress(anchor_name:String)->Result<Address,()> {
      let anchor_entry = Entry::new(EntryType::App("anchor".into()), json!(anchor_name));   
      match hdk::commit_entry(&anchor_entry){
-         Ok(addr)=>{            
-             Ok(addr)
-         },
+         Ok(addr)=>Ok(addr),
          Err(err)=>{
-              hdk::debug(err);
+             hdk::debug(err);
              Err(())
          }
      }

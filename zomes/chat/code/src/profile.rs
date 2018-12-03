@@ -34,10 +34,12 @@ pub struct Anchor {
     pub anchor_address: HashString  
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
+pub struct StoreProfile {
+    pub address: HashString ,
+    pub entry:Profile
+}
 
-/*handle_get_anchor(name:String){
-
-}*/
 
 pub fn profile_definition() -> ValidatingEntryType {
     entry!(
@@ -90,7 +92,7 @@ fn agent_profile_link() -> ValidatingLinkDefinition {
 
 // affiche 
 pub fn handle_get_profile_list() -> JsonString {    
-      hdk::debug("write a message to the logs"); 
+    hdk::debug("write a message to the logs"); 
     match get_profile_list() {
         Ok(result) => result.into(),
         Err(hdk_err) => hdk_err.into(),
@@ -98,52 +100,53 @@ pub fn handle_get_profile_list() -> JsonString {
 }
 
 // Retrouve le lien vers le profil et le transmet ss forme de collection
-fn get_profile_list() -> ZomeApiResult<Vec<Profile>> {
+fn get_profile_list() -> ZomeApiResult<Vec<StoreProfile>> {
    let anchor_addr:HashString= anchor::getAddress("profile_directory".to_string()).clone().unwrap();
     utils::get_links_and_load(&anchor_addr, "profile_directory").map(|results| {
-        results.iter().map(|get_links_result| {
-                Profile::try_from(get_links_result.entry.value().clone()).unwrap()
+        results.iter().map(|get_links_result| {           
+            StoreProfile {
+                address : get_links_result.address.clone(),
+                entry : Profile::try_from(get_links_result.entry.value().clone()).unwrap()
+            }
+                
             }).collect()
     })
 }
 
-
-
-
 /* RETROUVE UN LINK  ET SES OBJECTS*/
-
 // affiche la collection
 pub fn handle_get_my_profile() -> JsonString {    
-    match get_link_to_a_profile(AGENT_ADDRESS.to_owned(),"user_profile".to_string()) {
+    match get_link_to_my_profile(AGENT_ADDRESS.clone(),"user_profile".to_string()) {
         Ok(result) => result.into(),
         Err(hdk_err) => hdk_err.into(),
     }
 }
+
 // Retrouve le lien vers le profil et le transmet ss forme de collection
-fn get_link_to_a_profile(address:Address,tag:String) -> ZomeApiResult<Vec<Profile>> {
+fn get_link_to_my_profile(address:Address,tag:String) -> ZomeApiResult<Vec<Profile>> {
     utils::get_links_and_load(&address, tag).map(|results| {
         results.iter().map(|get_links_result| {Profile::try_from(get_links_result.entry.value().clone()).unwrap()})
             .collect()
     })
 }
 
-/* LINKER */
-fn linker(base:Address,address_entry:Address,tag:String) -> JsonString{
-    
-     match hdk::link_entries(&base,&address_entry,tag) {
-                Ok(link_address) => address_entry.into(),
-                Err(e) => e.into(),
-            }
+pub fn handle_get_a_profile(addr:Address) -> JsonString {       
+    match hdk::get_entry(addr.to_owned()) {
+        Ok(result) => result.and_then(|entry| Some(entry.serialize())).into(),
+        Err(hdk_err) => hdk_err.into(),
+    }
 }
-/* INSERER ENTRY ET LA LINKER */
+
+
+
+/* Add profile, links it to the agent, then registers it to the profile_directory anchor */
 pub fn handle_add_profile(name:String,country:String)->JsonString {
     let profile = Profile {name,country};
     let entry = Entry::new(EntryType::App("profile".into()), profile);
 	   match hdk::commit_entry(&entry) {
-        Ok(address) => {         
-        anchor::link_to_anchor("profile_directory".to_string(), address.clone(), "profile_directory".to_string());
-        linker(AGENT_ADDRESS.to_owned(),address.clone(),"user_profile".to_string())      
-        
+            Ok(address) => {         
+            anchor::link_to_anchor("profile_directory".to_string(), address.clone(), "profile_directory".to_string());
+            utils::linker(AGENT_ADDRESS.to_owned(),address.clone(),"user_profile".to_string()) 
         }
         Err(hdk_error) => hdk_error.into(),
     }   

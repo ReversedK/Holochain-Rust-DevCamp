@@ -20,7 +20,7 @@ const testMessage = {
   timestamp: "100000",
   text : "Some text"
 }
-/*
+
 test('Can create a public channel with no other members and retrieve it', (t) => {
   const create_result = app.call('chat', 'main', 'create_channel', testNewChannelParams)
   console.log(create_result)
@@ -32,7 +32,7 @@ test('Can create a public channel with no other members and retrieve it', (t) =>
 
   t.end()
 })
-
+/*
 test('Can post a message to the channel and retrieve', (t) => {
   const create_result = app.call('chat', 'main', 'create_channel', testNewChannelParams)
   console.log(create_result)
@@ -66,13 +66,29 @@ test('Get my profile', (t) => {
   t.notEqual(result.name, "Ba")
   t.end()
 })
-
+let r;
 test('Get profile List', (t) => {
   const result = app.call("chat", "main", "get_profile_list",{})
+  console.log(result);
+  r = result
+  t.equal(result.error, undefined)
+  t.end()
+})
+
+test('Get A profile by address', (t) => {
+  const result = app.call("chat", "main", "get_a_profile",{addr:r[0].address})
   console.log(result)
-  t.notEqual(result.error, undefined)
+  t.equal(result.error, undefined)
   t.end()
 })
 
 
+
+test('Get channel List', (t) => {
+  const result = app.call("chat", "main", "get_channel_list",{})
+  console.log(result);
+  r = result
+  t.equal(result.error, undefined)
+  t.end()
+})
 

@@ -27,7 +27,13 @@ pub struct GetLinksLoadElement {
 
 pub type GetLinksLoadResult = Vec<GetLinksLoadElement>;
 
-
+/* LINKER */
+pub fn linker(base:Address,address_entry:Address,tag:String) -> JsonString{    
+     match hdk::link_entries(&base,&address_entry,tag) {
+                Ok(link_address) => address_entry.into(),
+                Err(e) => e.into(),
+            }
+}
 
 pub fn get_links_and_load<S: Into<String>>(
     base: &HashString, 

@@ -5,6 +5,7 @@ use hdk::{
         ValidatingLinkDefinition,
     },
     error::{ZomeApiError, ZomeApiResult},
+    holochain_core_types::hash::HashString,
     holochain_core_types::cas::content::Address,
     holochain_core_types::dna::zome::entry_types::Sharing,
     holochain_core_types::entry::{entry_type::EntryType, Entry},
@@ -16,12 +17,19 @@ use std::convert::TryFrom;
 
 use super::message;
 use super::utils;
+use super::anchor;
 
 #[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
 pub struct Channel {
     pub name: String,
     pub description: String,
     pub public: bool,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
+pub struct StoreChannel {
+    pub address: HashString ,
+    pub entry:Channel
 }
 
 pub fn public_channel_definition() -> ValidatingEntryType {
@@ -40,7 +48,8 @@ pub fn public_channel_definition() -> ValidatingEntryType {
 
         links: [
             agent_channel_link(),
-            channel_message_link()
+            channel_message_link(),
+            channel_directory_link()
         ]
     )
 }
@@ -62,7 +71,8 @@ pub fn direct_channel_definition() -> ValidatingEntryType {
 
         links: [
             agent_channel_link(),
-            channel_message_link()
+            channel_message_link(),
+            channel_directory_link()
         ]
     )
 }
@@ -93,7 +103,43 @@ fn channel_message_link() -> ValidatingLinkDefinition {
     )
 }
 
+fn channel_directory_link() -> ValidatingLinkDefinition { 
+    from!(
+        "anchor",
+        tag: "channel_directory",
+        validation_package: || {
+            hdk::ValidationPackageDefinition::ChainFull
+        },
+        validation: |_source: Address, _target: Address, _ctx: hdk::ValidationData| {
+            Ok(())
+        }
+    )
+}
+
 // public zome functions
+
+// affiche 
+pub fn handle_get_list() -> JsonString {    
+    hdk::debug("write a message to the logs"); 
+    match get_list() {
+        Ok(result) => result.into(),
+        Err(hdk_err) => hdk_err.into(),
+    }
+}
+
+// Retrouve le lien vers le profil et le transmet ss forme de collection
+fn get_list() -> ZomeApiResult<Vec<StoreChannel>> {
+   let anchor_addr:HashString= anchor::getAddress("channel_directory".to_string()).clone().unwrap();
+    utils::get_links_and_load(&anchor_addr, "channel_directory").map(|results| {
+        results.iter().map(|get_links_result| {           
+            StoreChannel {
+                address : get_links_result.address.clone(),
+                entry : Channel::try_from(get_links_result.entry.value().clone()).unwrap()
+            }
+                
+            }).collect()
+    })
+}
 
 pub fn handle_create_channel(
     name: String,
@@ -112,9 +158,12 @@ pub fn handle_create_channel(
     };
 
     match hdk::commit_entry(&entry) {
-        Ok(address) => match hdk::link_entries(&AGENT_ADDRESS, &address, "rooms") {
+        Ok(address) => {
+            anchor::link_to_anchor("channel_directory".to_string(), address.clone(), "channel_directory".to_string());
+            match hdk::link_entries(&AGENT_ADDRESS, &address, "rooms") {
             Ok(_) => json!({ "address": address }).into(),
             Err(hdk_err) => hdk_err.into(),
+        }
         },
         Err(hdk_err) => hdk_err.into(),
     }

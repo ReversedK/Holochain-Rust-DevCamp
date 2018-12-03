@@ -16,6 +16,17 @@ mod profile;
 mod utils;
 mod anchor;
 
+use hdk::{    
+    holochain_core_types::{
+        dna::zome::entry_types::Sharing,
+        hash::HashString,
+        json::JsonString,
+        entry::Entry,
+        entry::entry_type::EntryType,
+        error::HolochainError,
+        cas::content::Address,
+    }
+};
 
 define_zome! {
 
@@ -60,17 +71,26 @@ define_zome! {
 				outputs: |result: JsonString|,
 				handler: profile::handle_add_profile
 			}
+			get_a_profile: {
+				inputs: |addr:Address|,
+				outputs: |result: JsonString|,
+				handler: profile::handle_get_a_profile
+			}
 			get_my_profile: {
 				inputs: | |,
 				outputs: |result: JsonString|,
 				handler: profile::handle_get_my_profile
-			}
+			}			
 			get_profile_list: {
 				inputs: | |,
 				outputs: |result: JsonString|,
 				handler: profile::handle_get_profile_list
 			}
-			
+			get_channel_list: {
+				inputs: | |,
+				outputs: |result: JsonString|,
+				handler: channel::handle_get_list
+			}
 		
 		}
 	}
