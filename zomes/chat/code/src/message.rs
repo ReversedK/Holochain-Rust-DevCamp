@@ -12,6 +12,7 @@ use hdk::{
 pub struct Message {
     pub timestamp: String,
     pub text: String,
+    pub from : Address
 }
 
 pub fn message_definition() -> ValidatingEntryType {

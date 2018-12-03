@@ -58,7 +58,7 @@ pub fn link_to_anchor(anchor_name:String,address:Address,tag:String)->JsonString
         Ok(anchor_address)=>{
             match hdk::link_entries(&anchor_address,&address,tag) {
                 Ok(())=>{
-                    hdk::debug("works!!!!!!!!!!!!");
+                    hdk::debug("address linked to anchor");
                     json!({"success":true}).into()
                     },
                 Err(err)=>{

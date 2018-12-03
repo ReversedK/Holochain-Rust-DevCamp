@@ -120,7 +120,7 @@ fn channel_directory_link() -> ValidatingLinkDefinition {
 
 // affiche 
 pub fn handle_get_list() -> JsonString {    
-    hdk::debug("write a message to the logs"); 
+    hdk::debug("Getting channel list"); 
     match get_list() {
         Ok(result) => result.into(),
         Err(hdk_err) => hdk_err.into(),
@@ -146,6 +146,7 @@ pub fn handle_create_channel(
     description: String,
     public: bool,
 ) -> JsonString {
+    hdk::debug("Creating a new channel");
     let channel = Channel {
         name,
         description,

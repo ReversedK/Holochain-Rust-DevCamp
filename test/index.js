@@ -32,7 +32,7 @@ test('Can create a public channel with no other members and retrieve it', (t) =>
 
   t.end()
 })
-/*
+
 test('Can post a message to the channel and retrieve', (t) => {
   const create_result = app.call('chat', 'main', 'create_channel', testNewChannelParams)
   console.log(create_result)
@@ -51,7 +51,7 @@ test('Can post a message to the channel and retrieve', (t) => {
   console.log(get_message_result)
   t.deepEqual(get_message_result[0], testMessage)
   t.end()
-})*/
+})
 
 test('create a profile', (t) => {
   const result = app.call("chat", "main", "add_profile", { name: "Ba" ,country:"France"})

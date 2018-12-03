@@ -61,7 +61,7 @@ pub fn profile_definition() -> ValidatingEntryType {
 }
 
 fn profile_directory_link() -> ValidatingLinkDefinition { 
-    to!(
+    from!(
         "anchor",
         tag: "profile_directory",
         validation_package: || {
@@ -92,7 +92,7 @@ fn agent_profile_link() -> ValidatingLinkDefinition {
 
 // affiche 
 pub fn handle_get_profile_list() -> JsonString {    
-    hdk::debug("write a message to the logs"); 
+    hdk::debug("getting profile list"); 
     match get_profile_list() {
         Ok(result) => result.into(),
         Err(hdk_err) => hdk_err.into(),
@@ -141,6 +141,7 @@ pub fn handle_get_a_profile(addr:Address) -> JsonString {
 
 /* Add profile, links it to the agent, then registers it to the profile_directory anchor */
 pub fn handle_add_profile(name:String,country:String)->JsonString {
+    hdk::debug("handlingProfileCreation");
     let profile = Profile {name,country};
     let entry = Entry::new(EntryType::App("profile".into()), profile);
 	   match hdk::commit_entry(&entry) {
